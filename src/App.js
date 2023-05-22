@@ -10,8 +10,8 @@ import Navbar from './Components/Navbar';
 const App = () => (
   <BrowserRouter>
     <div>
-  <Navbar />
-      
+      <Navbar />
+
       <Routes>
         <Route exact path="/" element={MyProfile} />
         <Route path="/missions" element={MyProfile} />

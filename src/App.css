@@ -10,6 +10,7 @@ nav ul {
 nav ul li {
   list-style: none;
 }
+
 nav ul li a {
   text-decoration: none;
   color: #17bcee;
@@ -19,4 +20,3 @@ nav ul li a.active {
   text-decoration: underline;
   color: #17bcee;
 }
-

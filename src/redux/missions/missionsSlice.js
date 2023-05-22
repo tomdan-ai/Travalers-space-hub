@@ -7,9 +7,7 @@ const missionsSlice = createSlice({
     addMission: (state, action) => {
       state.push(action.payload);
     },
-    removeMission: (state, action) => {
-      return state.filter(mission => mission.id !== action.payload);
-    },
+    removeMission: (state, action) => state.filter((mission) => mission.id !== action.payload),
   },
 });
 
