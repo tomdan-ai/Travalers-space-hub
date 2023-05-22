@@ -1,15 +1,22 @@
 import './App.css';
 import React from 'react';
 import {
-  BrowserRouter, Routes, Route, NavLink,
+  BrowserRouter, Routes, Route,
+  NavLink,
 } from 'react-router-dom';
+
+import planetImage from './assets/planet.png';
 import MyProfile from './Components/Profile';
 
 const App = () => (
   <BrowserRouter>
     <div>
+
       <nav>
         <ul>
+          <li>
+            <img src={planetImage} alt="planet-logo" width={55} height={55} />
+          </li>
           <li>
             <NavLink exact to="/" activeClassName="active">
               Rockets
@@ -27,6 +34,7 @@ const App = () => (
           </li>
         </ul>
       </nav>
+
       <Routes>
         <Route exact path="/" element={MyProfile} />
         <Route path="/missions" element={MyProfile} />
