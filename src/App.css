@@ -1,3 +1,12 @@
 .App {
   background-color: #fff;
 }
+
+nav ul {
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  list-style: none;
+}
