@@ -3,20 +3,39 @@ import { useSelector } from 'react-redux';
 
 const MyProfile = () => {
   const selectReservedRockets = (state) => state.rockets.rockets.filter((rocket) => rocket.reserved);
+  const selectReservedMissions = (state) => state.missions.missions.filter((mission) => mission.reserved);
+
   const reservedRockets = useSelector(selectReservedRockets);
+  const reservedMissions = useSelector(selectReservedMissions);
 
   return (
-    <div>
-      <h2>My Rockets</h2>
-      <table className="rocket-table">
-        <tbody>
-          {reservedRockets.map((rocket) => (
-            <tr key={rocket.id}>
-              <td>{rocket.rocket_name}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="profiles">
+      <div className="rockets">
+        <h2>My Rockets</h2>
+        <table className="rocket-table">
+          <tbody>
+            {reservedRockets.map((rocket) => (
+              <tr key={rocket.id}>
+                <td>{rocket.rocket_name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="missions">
+        <h2>My Missions</h2>
+        <table className="rocket-table">
+          <tbody>
+            {reservedMissions
+              .filter((mission) => mission.reserved)
+              .map((mission) => (
+                <tr key={mission.id}>
+                  <td>{mission.mission_name}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -178,3 +178,16 @@ nav ul li a.active {
   border: none;
   border-radius: 5%;
 }
+
+.profiles {
+  display: flex;
+  gap: 20px;
+}
+
+.rockets {
+  width: 100%;
+}
+
+.missions {
+  width: 100%;
+}
