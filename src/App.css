@@ -47,9 +47,9 @@ nav ul li a.active {
 }
 
 .rocket button {
-  width: 15%;
+  width: 18%;
   height: 5vh;
-  background-color: rgb(41, 41, 255);
+  background-color: rgb(82, 82, 253);
   color: #fff;
   font-size: 1.2em;
   font-weight: 900;
