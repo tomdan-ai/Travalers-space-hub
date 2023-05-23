@@ -5,7 +5,11 @@
 }
 
 nav ul {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid rgb(161, 161, 161);
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
@@ -71,6 +75,22 @@ nav ul li a.active {
   height: auto;
   font-size: 1.2em;
   line-height: 2;
+}
+
+.rocket-table {
+  border: 2px solid gray;
+  width: 40%;
+  height: auto;
+}
+
+.rocket-table td {
+  border: 2px solid gray;
+  width: 100%;
+  height: auto;
+  padding: 3%;
+  color: gray;
+  font-size: 1em;
+  font-weight: 900;
 }
 
 .missions-table {
