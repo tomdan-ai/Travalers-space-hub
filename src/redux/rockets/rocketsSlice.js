@@ -7,12 +7,18 @@ const initialState = {
   error: null,
 };
 
-export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () => {
+export const fetchRocketsData = createAsyncThunk('rockets/fetchRocketsData', async () => {
   try {
-    const response = await axios.get('www.fakeapi.com/');
-    return response.data;
+    const response = await axios.get('https://api.spacexdata.com/v4/rockets');
+    const selectedData = response.data.map((rocket) => ({
+      id: rocket.id,
+      rocket_name: rocket.name,
+      description: rocket.description,
+      rocket_flickr_images: rocket.flickr_images,
+    }));
+    return selectedData;
   } catch (error) {
-    throw new Error('Failed to fetch rockets');
+    throw new Error('Failed to fetch rocket data');
   }
 });
 
@@ -24,23 +30,19 @@ const rocketsSlice = createSlice({
       state.rockets.push(action.payload);
     },
     removeRockets: (state, action) => {
-      const rocketsIndex = state.rockets.findIndex((rocket) => rocket.id === action.payload);
-      if (rocketsIndex !== -1) {
-        state.rockets.splice(rocketsIndex, 1);
-      }
+      state.rockets = state.rockets.filter((rocket) => rocket.id !== action.payload);
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchRockets.pending, (state) => {
+      .addCase(fetchRocketsData.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(fetchRockets.fulfilled, (state, { payload }) => {
+      .addCase(fetchRocketsData.fulfilled, (state, { payload }) => {
         state.status = 'succeeded';
-        state.books = Object.entries(payload)
-          .flatMap(([id, value]) => value.map((rocket) => ({ ...rocket, id })));
+        state.rockets = payload;
       })
-      .addCase(fetchRockets.rejected, (state, action) => {
+      .addCase(fetchRocketsData.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });

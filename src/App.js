@@ -4,9 +4,10 @@ import {
   BrowserRouter, Routes, Route,
 } from 'react-router-dom';
 
-import MyProfile from './Components/Profile';
+import Missions from './Components/Missions';
 import Navbar from './Components/Navbar';
 import Rockets from './Components/Rockets';
+import MyProfile from './Components/Profile';
 
 const App = () => (
   <BrowserRouter>
@@ -14,9 +15,9 @@ const App = () => (
       <Navbar />
 
       <Routes>
-        <Route exact path="/" element={Rockets} />
-        <Route path="/missions" element={MyProfile} />
-        <Route path="/myprofile" element={MyProfile} />
+        <Route exact path="/" element={<Rockets />} />
+        <Route path="/missions" element={<Missions />} />
+        <Route path="/profile" element={<MyProfile />} />
       </Routes>
     </div>
   </BrowserRouter>
