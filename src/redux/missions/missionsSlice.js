@@ -28,7 +28,8 @@ const missionsSlice = createSlice({
     addMission: (state, action) => {
       state.missions.push(action.payload);
     },
-    removeMission: (state, action) => state.missions.filter((mission) => mission.id !== action.payload),
+    removeMission: (state, action) => state.missions
+      .filter((mission) => mission.id !== action.payload),
   },
   extraReducers: (builder) => {
     builder

@@ -18,7 +18,6 @@ const Missions = () => {
           <th>Mission</th>
           <th>Description</th>
           <th>Status</th>
-          <th />
         </tr>
       </thead>
       <tbody>
