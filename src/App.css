@@ -2,6 +2,45 @@
   background-color: #fff;
 }
 
+.rocket {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+}
+
+.rocket li {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+}
+
+.rocket img {
+  width: 30%;
+  height: auto;
+}
+
+.rocket div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.rocket button {
+  width: 15%;
+  height: 5vh;
+  background-color: rgb(41, 41, 255);
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 900;
+  border: none;
+  border-radius: 5%;
+}
+
+.rocket p {
+  width: 90%;
+  height: auto;
+}
+
 nav ul {
   display: flex;
   gap: 20px;
