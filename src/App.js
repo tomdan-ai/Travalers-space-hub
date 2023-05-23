@@ -11,7 +11,7 @@ import MyProfile from './Components/Profile';
 
 const App = () => (
   <BrowserRouter>
-    <div>
+    <div className="App">
       <Navbar />
 
       <Routes>
