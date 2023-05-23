@@ -8,17 +8,17 @@ const Navbar = () => (
         <img src={planetImage} alt="planet-logo" width={55} height={55} />
       </li>
       <li>
-        <NavLink exact to="/" activeClassName="active">
+        <NavLink to="/" className="active">
           Rockets
         </NavLink>
       </li>
       <li>
-        <NavLink to="/missions" activeClassName="active">
+        <NavLink to="/missions" className="active">
           Missions
         </NavLink>
       </li>
       <li>
-        <NavLink to="/myprofile" activeClassName="active">
+        <NavLink to="/myprofile" className="active">
           My Profile
         </NavLink>
       </li>
