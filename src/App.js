@@ -17,7 +17,7 @@ const App = () => (
       <Routes>
         <Route exact path="/" element={<Rockets />} />
         <Route path="/missions" element={<Missions />} />
-        <Route path="/profile" element={<MyProfile />} />
+        <Route path="/myprofile" element={<MyProfile />} />
       </Routes>
     </div>
   </BrowserRouter>
