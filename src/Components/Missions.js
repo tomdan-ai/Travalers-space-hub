@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMissionsData, reserveMission } from '../redux/missions/missionsSlice';
+import { fetchMissionsData, reserveMission, leaveMission } from '../redux/missions/missionsSlice';
 
 const Missions = () => {
   const dispatch = useDispatch();
   const missions = useSelector((state) => state.missions.missions);
+  const [currentMissionId, setCurrentMissionId] = useState(null);
 
   useEffect(() => {
     dispatch(fetchMissionsData());
   }, [dispatch]);
 
-  const handleJoinMission = () => {
-    dispatch(reserveMission(missions.id));
+  const handleJoinMission = (missionId) => {
+    dispatch(reserveMission(missionId));
+    setCurrentMissionId(missionId);
+  };
+
+  const handleLeaveMission = (missionId) => {
+    dispatch(leaveMission(missionId));
+    setCurrentMissionId(null);
   };
 
   return (
@@ -32,12 +39,22 @@ const Missions = () => {
             {mission.description}
           </div>
           <div className="missions-table-cell status">
-            <button className="membership" type="button">Not a member</button>
+            {currentMissionId === mission.id ? (
+              <badge className="membership">Member</badge>
+            ) : (
+              <badge className="membership">Not a member</badge>
+            )}
           </div>
           <div className="missions-table-cell button">
-            <button onClick={handleJoinMission} className="join-button" type="submit">
-              Join Mission
-            </button>
+            {currentMissionId === mission.id ? (
+              <button onClick={() => handleLeaveMission(mission.id)} className="leave-button" type="submit">
+                Leave Mission
+              </button>
+            ) : (
+              <button onClick={() => handleJoinMission(mission.id)} className="join-button" type="submit">
+                Join Mission
+              </button>
+            )}
           </div>
         </div>
       ))}
