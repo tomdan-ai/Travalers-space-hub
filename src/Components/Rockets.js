@@ -15,9 +15,9 @@ const Rockets = () => {
       <ul>
         {rockets.map((rocket) => (
           <li key={rocket.id}>
-            <img src={rocket.flickr_images} alt={rocket.name} />
-            <h1>{rocket.name}</h1>
-            <p>{rocket.type}</p>
+            <img src={rocket.rocket_flickr_images} alt={rocket.name} />
+            <h1>{rocket.rocket_name}</h1>
+            <p>{rocket.description}</p>
             <button type="button">Reserve Rocket</button>
           </li>
         ))}

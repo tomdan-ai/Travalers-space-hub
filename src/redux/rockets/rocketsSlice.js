@@ -12,9 +12,9 @@ export const fetchRocketsData = createAsyncThunk('rockets/fetchRocketsData', asy
     const response = await axios.get('https://api.spacexdata.com/v4/rockets');
     const selectedData = response.data.map((rocket) => ({
       id: rocket.id,
-      name: rocket.name,
-      type: rocket.type,
-      flickr_images: rocket.flickr_images,
+      rocket_name: rocket.name,
+      description: rocket.description,
+      rocket_flickr_images: rocket.flickr_images,
     }));
     return selectedData;
   } catch (error) {
