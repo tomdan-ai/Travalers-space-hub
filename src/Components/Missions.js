@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMissionsData } from '../redux/missions/missionsSlice';
+import { reserveMission } from '../redux/missions/missionsSlice';
 
 const Missions = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,11 @@ const Missions = () => {
   useEffect(() => {
     dispatch(fetchMissionsData());
   }, [dispatch]);
+
+
+  const handleJoinMission = () => {
+    dispatch(reserveMission(missions.id));
+  };
 
   return (
     <div className="missions-table">
@@ -31,9 +37,9 @@ const Missions = () => {
             <button className="membership" type="button">Not a member</button>
           </div>
           <div className="missions-table-cell button">
-            <button type="submit" className="join-button">
-              Join Mission
-            </button>
+          <button onClick={handleJoinMission} className="join-button">
+        Join Mission
+      </button>
           </div>
         </div>
       ))}
