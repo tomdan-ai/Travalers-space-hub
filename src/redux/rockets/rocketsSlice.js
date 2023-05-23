@@ -26,12 +26,6 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
   reducers: {
-    addRockets: (state, action) => {
-      state.rockets.push(action.payload);
-    },
-    removeRockets: (state, action) => {
-      state.rockets = state.rockets.filter((rocket) => rocket.id !== action.payload);
-    },
     reserveRocket: (state, action) => {
       const rocketId = action.payload;
       state.rockets = state.rockets.map((rocket) => (rocket.id === rocketId
@@ -39,7 +33,8 @@ const rocketsSlice = createSlice({
     },
     unreserveRocket: (state, action) => {
       const rocketId = action.payload;
-      state.rockets = state.rockets.map((rocket) => (rocket.id === rocketId ? { ...rocket, reserved: false } : rocket));
+      state.rockets = state.rockets.map((rocket) => (rocket.id === rocketId
+        ? { ...rocket, reserved: false } : rocket));
     },
   },
   extraReducers: (builder) => {
@@ -59,7 +54,5 @@ const rocketsSlice = createSlice({
 
 });
 
-export const {
-  addRockets, removeRockets, reserveRocket, unreserveRocket,
-} = rocketsSlice.actions;
+export const { reserveRocket, unreserveRocket } = rocketsSlice.actions;
 export default rocketsSlice.reducer;
