@@ -12,25 +12,32 @@ const Missions = () => {
   }, [dispatch]);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Mission</th>
-          <th>Description</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {missions.map((mission) => (
-          <tr key={mission.id}>
-            <td>{mission.mission_name}</td>
-            <td>{mission.description}</td>
-            <td>Not a member</td>
-            <td><button type="button">Join Mission</button></td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="missions-table">
+      <div className="missions-table-row head">
+        <div className="missions-table-cell">Mission</div>
+        <div className="missions-table-cell">Description</div>
+        <div className="missions-table-cell">Status</div>
+        <div className="missions-button-cell" />
+      </div>
+      {missions.map((mission) => (
+        <div key={mission.id} className="missions-table-row">
+          <div className="missions-table-cell mission-name">
+            {mission.mission_name}
+          </div>
+          <div className="missions-table-cell description">
+            {mission.description}
+          </div>
+          <div className="missions-table-cell status">
+            <button className="membership" type="button">Not a member</button>
+          </div>
+          <div className="missions-table-cell button">
+            <button type="submit" className="join-button">
+              Join Mission
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 
