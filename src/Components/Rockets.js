@@ -27,10 +27,18 @@ const Rockets = () => {
             <img src={rocket.rocket_flickr_images} alt={rocket.name} />
             <div>
               <h1>{rocket.rocket_name}</h1>
-              <p>{rocket.description}</p>
+              <p>
+                {rocket.reserved && <span>Reserved</span>}
+                {rocket.description}
+              </p>
               <button
                 type="button"
                 onClick={() => handleReserveRocket(rocket.id)}
+                style={{
+                  backgroundColor: rocket.reserved ? '#fff' : 'rgb(82, 82, 253)',
+                  color: rocket.reserved ? '#000' : '#fff',
+                  border: rocket.reserved ? '1px solid #000' : 'none',
+                }}
               >
                 {rocket.reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
               </button>
