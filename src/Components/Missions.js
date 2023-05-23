@@ -40,7 +40,7 @@ const Missions = () => {
           </div>
           <div className="missions-table-cell status">
             {currentMissionId === mission.id ? (
-              <badge className="membership">Member</badge>
+              <badge className="acmembership">Active member</badge>
             ) : (
               <badge className="membership">Not a member</badge>
             )}

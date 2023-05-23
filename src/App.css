@@ -149,3 +149,12 @@ nav ul li a.active {
   border: none;
   border-radius: 5%;
 }
+
+.acmembership {
+  font-size: 1em;
+  color: #fff;
+  background-color: rgb(99, 99, 255);
+  padding: 1.5px;
+  border: none;
+  border-radius: 5%;
+}
