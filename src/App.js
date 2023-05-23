@@ -6,6 +6,7 @@ import {
 
 import MyProfile from './Components/Profile';
 import Navbar from './Components/Navbar';
+import Rockets from './Components/Rockets';
 
 const App = () => (
   <BrowserRouter>
@@ -13,7 +14,7 @@ const App = () => (
       <Navbar />
 
       <Routes>
-        <Route exact path="/" element={MyProfile} />
+        <Route exact path="/" element={Rockets} />
         <Route path="/missions" element={MyProfile} />
         <Route path="/myprofile" element={MyProfile} />
       </Routes>
