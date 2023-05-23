@@ -1,14 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-
-
-  const initialState = {
-    missions: [],
-    status: 'idle',
-    error: null,
-  };
-
+const initialState = {
+  missions: [],
+  status: 'idle',
+  error: null,
+};
 
 export const fetchMissionsData = createAsyncThunk('missions/getData', async () => {
   try {
@@ -16,11 +13,11 @@ export const fetchMissionsData = createAsyncThunk('missions/getData', async () =
     const chosenData = response.data.map((mission) => ({
       id: mission.id,
       mission_name: mission.name,
-      description: mission.description
+      description: mission.description,
     }));
     return chosenData;
-  }catch (error) {
-    throw new Error('Failed to fetch missions data')
+  } catch (error) {
+    throw new Error('Failed to fetch missions data');
   }
 });
 
@@ -45,10 +42,9 @@ const missionsSlice = createSlice({
       .addCase(fetchMissionsData.rejected, (state, action) => {
         state.status = 'error';
         state.error = action.error.message;
-      })
-  }
+      });
+  },
 });
-  
 
 export const { addMission, removeMission } = missionsSlice.actions;
 

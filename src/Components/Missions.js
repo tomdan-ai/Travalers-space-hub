@@ -1,7 +1,7 @@
-import React from 'react';
-import { useEffect } from 'react'
-import { fetchMissionsData } from '../redux/missions/missionsSlice';
+import React, { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchMissionsData } from '../redux/missions/missionsSlice';
 
 const Missions = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const Missions = () => {
 
   useEffect(() => {
     dispatch(fetchMissionsData());
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <table>
@@ -18,7 +18,7 @@ const Missions = () => {
           <th>Mission</th>
           <th>Description</th>
           <th>Status</th>
-          <th></th>
+          <th />
         </tr>
       </thead>
       <tbody>
@@ -27,7 +27,7 @@ const Missions = () => {
             <td>{mission.mission_name}</td>
             <td>{mission.description}</td>
             <td>Not a member</td>
-            <td><button type='button'>Join Mission</button></td>
+            <td><button type="button">Join Mission</button></td>
           </tr>
         ))}
       </tbody>
