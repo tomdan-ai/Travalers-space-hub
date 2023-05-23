@@ -9,8 +9,8 @@ const MyProfile = () => {
   const reservedMissions = useSelector(selectReservedMissions);
 
   return (
-    <div className='profiles'>
-      <div className='rockets'>
+    <div className="profiles">
+      <div className="rockets">
         <h2>My Rockets</h2>
         <table className="rocket-table">
           <tbody>
@@ -22,12 +22,12 @@ const MyProfile = () => {
           </tbody>
         </table>
       </div>
-      <div className='missions'>
+      <div className="missions">
         <h2>My Missions</h2>
         <table className="rocket-table">
           <tbody>
             {reservedMissions
-              .filter((mission) => mission.reserved) // Filter the reserved missions
+              .filter((mission) => mission.reserved)
               .map((mission) => (
                 <tr key={mission.id}>
                   <td>{mission.mission_name}</td>
