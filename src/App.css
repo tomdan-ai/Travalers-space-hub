@@ -197,3 +197,20 @@ nav ul li a.active {
 .missions {
   width: 100%;
 }
+
+.missions-table-row.head {
+  /* Remove the border-right property for table headings */
+  .missions-table-cell {
+    border-right: none;
+  }
+}
+
+.divider {
+  border-left: 1px solid;
+  margin-right: 1%;
+  padding-left: 1%;
+}
+
+.missions-table-row:not(.head):nth-child(even) {
+  background-color: rgb(228, 226, 226);
+}
