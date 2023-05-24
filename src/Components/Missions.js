@@ -25,9 +25,9 @@ const Missions = () => {
   return (
     <div className="missions-table">
       <div className="missions-table-row head">
-        <div className="missions-table-cell">Mission</div>
-        <div className="missions-table-cell">Description</div>
-        <div className="missions-table-cell">Status</div>
+        <div className="missions-table-cell mission-name">Mission</div>
+        <div className="missions-table-cell description">Description</div>
+        <div className="missions-table-cell status">Status</div>
         <div className="missions-button-cell" />
       </div>
       {missions.map((mission) => (

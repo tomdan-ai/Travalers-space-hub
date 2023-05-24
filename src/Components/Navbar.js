@@ -24,7 +24,7 @@ const Navbar = () => (
           Missions
         </NavLink>
       </li>
-      <li>
+      <li className="divider">
         <NavLink to="/myprofile" activeClassName="active">
           My Profile
         </NavLink>

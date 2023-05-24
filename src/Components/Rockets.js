@@ -35,7 +35,7 @@ const Rockets = () => {
                 type="button"
                 onClick={() => handleReserveRocket(rocket.id)}
                 style={{
-                  backgroundColor: rocket.reserved ? '#fff' : 'rgb(82, 82, 253)',
+                  backgroundColor: rocket.reserved ? '#fff' : '#17bcee',
                   color: rocket.reserved ? '#000' : '#fff',
                   border: rocket.reserved ? '1px solid #000' : 'none',
                 }}
