@@ -57,7 +57,7 @@ Whether you're a seasoned space enthusiast or an aspiring astronaut, the Space T
 ## 🛠 Walk through <a name="walk-through"></a>
 
 <ul>
-  <li><a href="https://github.com/microverseinc/curriculum-javascript/blob/main/group-capstone/js_capstone.md">See the Project Requirement</a></li>
+  <li><a href="https://github.com/microverseinc/curriculum-react-redux/blob/main/group-project/project_space_travelers_hub.md">See the Project Requirement</a></li>
   <li>If required you should personalize the content of your page. Choose a topic that is different than the one in the original design</li>
 
 **_API REQUIREMENTS_**
