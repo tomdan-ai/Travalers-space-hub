@@ -7,8 +7,10 @@ const Rockets = () => {
   const rockets = useSelector((state) => state.rockets.rockets);
 
   useEffect(() => {
-    dispatch(fetchRocketsData());
-  }, [dispatch]);
+    if (rockets.length === 0) {
+      dispatch(fetchRocketsData());
+    }
+  }, [rockets, dispatch]);
 
   const handleReserveRocket = (rocketId) => {
     const rocket = rockets.find((rock) => rock.id === rocketId);
