@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Rockets from '../Components/Rockets';
-import { fetchRocketsData, reserveRocket, unreserveRocket } from '../redux/rockets/rocketsSlice';
+import { reserveRocket, unreserveRocket } from '../redux/rockets/rocketsSlice';
 
 const mockStore = configureStore([]);
 
