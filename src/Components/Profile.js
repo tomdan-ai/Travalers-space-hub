@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 const MyProfile = () => {
   const selectReservedRockets = (state) => state.rockets.rockets.filter((rocket) => rocket.reserved);
-  const selectReservedMissions = (state) => state.missions.missions.filter((mission) => mission.reserved);
+  const selectReservedMissions = (state) => state.missions.reservedMissions.map((missionId) => state.missions.missions.find((mission) => mission.id === missionId));
 
   const reservedRockets = useSelector(selectReservedRockets);
   const reservedMissions = useSelector(selectReservedMissions);
@@ -26,13 +26,11 @@ const MyProfile = () => {
         <h2>My Missions</h2>
         <table className="rocket-table">
           <tbody>
-            {reservedMissions
-              .filter((mission) => mission.reserved)
-              .map((mission) => (
-                <tr key={mission.id}>
-                  <td>{mission.mission_name}</td>
-                </tr>
-              ))}
+            {reservedMissions.map((mission) => (
+              <tr key={mission.id}>
+                <td>{mission.mission_name}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -38,7 +38,7 @@ exports[`Missions component matches the snapshot 1`] = `
       <div
         class="missions-table-cell description"
       >
-        The first mission description.
+        Description of Mission 1
       </div>
       <div
         class="missions-table-cell status"
@@ -71,25 +71,25 @@ exports[`Missions component matches the snapshot 1`] = `
       <div
         class="missions-table-cell description"
       >
-        The second mission description.
+        Description of Mission 2
       </div>
       <div
         class="missions-table-cell status"
       >
         <span
-          class="membership"
+          class="acmembership"
         >
-          Not a member
+          Active member
         </span>
       </div>
       <div
         class="missions-table-cell button"
       >
         <button
-          class="join-button"
+          class="leave-button"
           type="submit"
         >
-          Join Mission
+          Leave Mission
         </button>
       </div>
     </div>

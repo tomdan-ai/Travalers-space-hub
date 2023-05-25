@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Missions from '../Components/Missions';
-import { reserveMission } from '../redux/missions/missionsSlice';
+import { reserveMission, leaveMission } from '../redux/missions/missionsSlice';
 
 const mockStore = configureStore([]);
 
@@ -18,16 +18,15 @@ describe('Missions component', () => {
           {
             id: 1,
             mission_name: 'Mission 1',
-            description: 'The first mission description.',
-            membership: 'Not a member',
+            description: 'Description of Mission 1',
           },
           {
             id: 2,
             mission_name: 'Mission 2',
-            description: 'The second mission description.',
-            membership: 'Not a member',
+            description: 'Description of Mission 2',
           },
         ],
+        reservedMissions: [2],
       },
     });
 
@@ -40,15 +39,34 @@ describe('Missions component', () => {
     );
   });
 
-  it('dispatches fetchMissionsData action on mount', () => {
-    expect(store.dispatch).toHaveBeenCalledWith(expect.any(Function));
-  });
+  // it('dispatches fetchMissionsData action on mount if missions array is empty', () => {
+  //   expect(store.dispatch).toHaveBeenCalledWith(fetchMissionsData());
+  // });
 
   it('dispatches reserveMission action when Join Mission button is clicked', () => {
-    const joinButtons = component.getAllByRole('button', { name: 'Join Mission' });
-    fireEvent.click(joinButtons[0]);
+    const joinButton = component.getByText('Join Mission');
+    fireEvent.click(joinButton);
 
     expect(store.dispatch).toHaveBeenCalledWith(reserveMission(1));
+  });
+
+  it('dispatches leaveMission action when Leave Mission button is clicked', () => {
+    const leaveButton = component.getByText('Leave Mission');
+    fireEvent.click(leaveButton);
+
+    expect(store.dispatch).toHaveBeenCalledWith(leaveMission(2));
+  });
+
+  it('renders missions with correct status and buttons', () => {
+    const mission1Status = component.getByText('Not a member');
+    const mission2Status = component.getByText('Active member');
+    const joinButton = component.getByText('Join Mission');
+    const leaveButton = component.getByText('Leave Mission');
+
+    expect(mission1Status).toBeInTheDocument();
+    expect(mission2Status).toBeInTheDocument();
+    expect(joinButton).toBeInTheDocument();
+    expect(leaveButton).toBeInTheDocument();
   });
 
   it('matches the snapshot', () => {

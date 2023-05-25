@@ -3,11 +3,16 @@ import axios from 'axios';
 
 const initialState = {
   missions: [],
+  reservedMissions: [],
   status: 'idle',
   error: null,
 };
 
-export const fetchMissionsData = createAsyncThunk('missions/getData', async () => {
+export const fetchMissionsData = createAsyncThunk('missions/getData', async (_, { getState }) => {
+  const { missions } = getState().missions;
+  if (missions.length > 0) {
+    return missions;
+  }
   try {
     const response = await axios.get('https://api.spacexdata.com/v3/missions');
     const chosenData = response.data.map((mission) => ({
@@ -25,17 +30,15 @@ const missionsSlice = createSlice({
   name: 'missions',
   initialState,
   reducers: {
-    addMission: (state, action) => {
-      state.missions.push(action.payload);
-    },
-    removeMission: (state, action) => state.missions.filter((mission) => mission.id !== action.payload),
     reserveMission: (state, action) => {
-      const id = action.payload;
-      state.missions = state.missions.map((mission) => (mission.id !== id ? mission : { ...mission, reserved: true }));
+      const missionId = action.payload;
+      if (!state.reservedMissions.includes(missionId)) {
+        state.reservedMissions.push(missionId);
+      }
     },
     leaveMission: (state, action) => {
-      const id = action.payload;
-      state.missions = state.missions.map((mission) => (mission.id !== id ? mission : { ...mission, reserved: false }));
+      const missionId = action.payload;
+      state.reservedMissions = state.reservedMissions.filter((id) => id !== missionId);
     },
   },
   extraReducers: (builder) => {
@@ -54,8 +57,6 @@ const missionsSlice = createSlice({
   },
 });
 
-export const {
-  addMission, removeMission, reserveMission, leaveMission,
-} = missionsSlice.actions;
+export const { reserveMission, leaveMission } = missionsSlice.actions;
 
 export default missionsSlice.reducer;

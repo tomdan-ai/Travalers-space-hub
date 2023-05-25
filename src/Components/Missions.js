@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMissionsData, reserveMission, leaveMission } from '../redux/missions/missionsSlice';
 
 const Missions = () => {
   const dispatch = useDispatch();
   const missions = useSelector((state) => state.missions.missions);
-  const [currentMissionId, setCurrentMissionId] = useState(null);
+  const reservedMissions = useSelector((state) => state.missions.reservedMissions);
 
   useEffect(() => {
-    dispatch(fetchMissionsData());
-  }, [dispatch]);
+    if (missions.length === 0) {
+      dispatch(fetchMissionsData());
+    }
+  }, [dispatch, missions.length]);
 
   const handleJoinMission = (missionId) => {
     dispatch(reserveMission(missionId));
-    setCurrentMissionId(missionId);
   };
 
   const handleLeaveMission = (missionId) => {
     dispatch(leaveMission(missionId));
-    setCurrentMissionId(null);
   };
 
   return (
@@ -39,14 +38,14 @@ const Missions = () => {
             {mission.description}
           </div>
           <div className="missions-table-cell status">
-            {currentMissionId === mission.id ? (
+            {reservedMissions.includes(mission.id) ? (
               <span className="acmembership">Active member</span>
             ) : (
               <span className="membership">Not a member</span>
             )}
           </div>
           <div className="missions-table-cell button">
-            {currentMissionId === mission.id ? (
+            {reservedMissions.includes(mission.id) ? (
               <button onClick={() => handleLeaveMission(mission.id)} className="leave-button" type="submit">
                 Leave Mission
               </button>
