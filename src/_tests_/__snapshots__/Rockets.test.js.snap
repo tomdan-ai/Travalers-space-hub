@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rockets component matches the snapshot 1`] = `
+<div>
+  <div>
+    <ul
+      class="rocket"
+    >
+      <li>
+        <img
+          src="https://www.flickr.com/photos/spacex/8884203235/in/photostream/"
+        />
+        <div>
+          <h1>
+            Falcon 1
+          </h1>
+          <p>
+            A small rocket for small payloads.
+          </p>
+          <button
+            style="background-color: rgb(23, 188, 238); color: rgb(255, 255, 255);"
+            type="button"
+          >
+            Reserve Rocket
+          </button>
+        </div>
+      </li>
+      <li>
+        <img
+          src="https://www.flickr.com/photos/spacex/8884203235/in/photostream/"
+        />
+        <div>
+          <h1>
+            Falcon 9
+          </h1>
+          <p>
+            <span>
+              Reserved
+            </span>
+            A medium-sized rocket for medium-sized payloads.
+          </p>
+          <button
+            style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border: 1px solid #000;"
+            type="button"
+          >
+            Cancel Reservation
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Missions component matches the snapshot 1`] = `
+<div>
+  <div
+    class="missions-table"
+  >
+    <div
+      class="missions-table-row head"
+    >
+      <div
+        class="missions-table-cell mission-name"
+      >
+        Mission
+      </div>
+      <div
+        class="missions-table-cell description"
+      >
+        Description
+      </div>
+      <div
+        class="missions-table-cell status"
+      >
+        Status
+      </div>
+      <div
+        class="missions-button-cell"
+      />
+    </div>
+    <div
+      class="missions-table-row"
+    >
+      <div
+        class="missions-table-cell mission-name"
+      >
+        Mission 1
+      </div>
+      <div
+        class="missions-table-cell description"
+      >
+        Description of Mission 1
+      </div>
+      <div
+        class="missions-table-cell status"
+      >
+        <span
+          class="membership"
+        >
+          Not a member
+        </span>
+      </div>
+      <div
+        class="missions-table-cell button"
+      >
+        <button
+          class="join-button"
+          type="submit"
+        >
+          Join Mission
+        </button>
+      </div>
+    </div>
+    <div
+      class="missions-table-row"
+    >
+      <div
+        class="missions-table-cell mission-name"
+      >
+        Mission 2
+      </div>
+      <div
+        class="missions-table-cell description"
+      >
+        Description of Mission 2
+      </div>
+      <div
+        class="missions-table-cell status"
+      >
+        <span
+          class="acmembership"
+        >
+          Active member
+        </span>
+      </div>
+      <div
+        class="missions-table-cell button"
+      >
+        <button
+          class="leave-button"
+          type="submit"
+        >
+          Leave Mission
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
