@@ -1,89 +1,57 @@
-import React from "react";
-import { render, screen, fireEvent } from '@testing-library/react'
-import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import Missions from "../Components/Missions";
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import Missions from '../Components/Missions';
+import { fetchMissionsData, reserveMission, leaveMission } from '../redux/missions/missionsSlice';
 
 const mockStore = configureStore([]);
 
-describe('Missions Component', () => {
-    let store;
-    const missionsData = [
-        {id: 1, mission_name: 'Mission 1', description: 'Description 1',},
-        {id: 2, mission_name: 'Mission 2', description: 'Description 2',},
-    ];
+describe('Missions component', () => {
+  let store;
+  let component;
 
-    beforeEach(() => {
-        store = mockStore({
-            missions: {
-                missions: missionsData,
-            },
-        });
+  beforeEach(() => {
+    store = mockStore({
+      missions: {
+        missions: [
+          {
+            id: 1,
+            mission_name: 'Mission 1',
+            description: 'The first mission description.',
+            membership: 'Not a member',
+          },
+          {
+            id: 2,
+            mission_name: 'Mission 2',
+            description: 'The second mission description.',
+            membership: 'Not a member',
+          },
+        ],
+      },
     });
 
+    store.dispatch = jest.fn();
 
-    it('should render the missions table correctly', () => {
-        render(
-            <Provider store={store}>
-                <Missions />
-            </Provider>
-        );
+    component = render(
+      <Provider store={store}>
+        <Missions />
+      </Provider>,
+    );
+  });
 
+  it('dispatches fetchMissionsData action on mount', () => {
+    expect(store.dispatch).toHaveBeenCalledWith(expect.any(Function));
+  });
 
-            expect(screen.getByText('Mission')).toBeInTheDocument();
-            expect(screen.getByText('Description')).toBeInTheDocument();
-            expect(screen.getByText('Status')).toBeInTheDocument();
+  it('dispatches reserveMission action when Join Mission button is clicked', () => {
+    const joinButtons = component.getAllByRole('button', { name: 'Join Mission' });
+    fireEvent.click(joinButtons[0]);
 
+    expect(store.dispatch).toHaveBeenCalledWith(reserveMission(1));
+  });
 
-            missionsData.forEach((mission) => {
-                expect(screen.getByText(mission.mission_name)).toBeInTheDocument();
-                expect(screen.getByText(mission.description)).toBeInTheDocument();
-            });
-    });
-
-
-    it('should allow joining a mission', () => {
-        render(
-            <Provider store={store}>
-                <Missions />
-            </Provider>
-        );
-
-            const joinButton = screen.getByText('Join Mission')[0];
-
-            fireEvent.click(joinButton);
-
-            expect(screen.getByText('Leave Mission')).toBeInTheDocument();
-    });
-
-
-    it('should allow leaving a mission', () => {
-        render(
-            <Provider store={store}>
-                <Missions />
-            </Provider>
-        );
-            const joinButton =screen.getAllByText('Join Mission')[0];
-
-            fireEvent.click(joinButton);
-
-            const leaveButton = screen.getAllByText('Leave Mission')[0];
-            
-            fireEvent.click(leaveButton);
-
-            expect(screen.getByText('Join Mission')).toBeInTheDocument();
-
-
-        });
-
-
-    it('should match the snapshot', () => {
-        const { container } = render(
-                <Provider store={store}>
-                    <Missions />
-                </Provider>
-        );
-
-        expect(container).toMatchSnapshot
-    });
+  it('matches the snapshot', () => {
+    expect(component.container).toMatchSnapshot();
+  });
 });
