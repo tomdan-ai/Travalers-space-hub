@@ -43,9 +43,9 @@ describe('Missions component', () => {
     render(
       <Provider store={store}>
         <Missions />
-      </Provider>
+      </Provider>,
     );
-  
+
     await waitFor(() => {
       const state = store.getState();
       expect(state.missions.missions).not.toHaveLength(0);
