@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Missions from '../Components/Missions';
@@ -39,9 +39,18 @@ describe('Missions component', () => {
     );
   });
 
-  // it('dispatches fetchMissionsData action on mount if missions array is empty', () => {
-  //   expect(store.dispatch).toHaveBeenCalledWith(fetchMissionsData());
-  // });
+  it('dispatches fetchMissionsData action on mount if missions array is empty', async () => {
+    render(
+      <Provider store={store}>
+        <Missions />
+      </Provider>
+    );
+  
+    await waitFor(() => {
+      const state = store.getState();
+      expect(state.missions.missions).not.toHaveLength(0);
+    });
+  });
 
   it('dispatches reserveMission action when Join Mission button is clicked', () => {
     const joinButton = component.getByText('Join Mission');
